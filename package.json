@@ -1,0 +1,25 @@
+{
+  "name": "streaming-media-assignment",
+  "version": "1.0.0",
+  "description": "Assignment for 430",
+  "homepage": "https://github.com/aharkleroad/streaming-media-assignment#readme",
+  "bugs": {
+    "url": "https://github.com/aharkleroad/streaming-media-assignment/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aharkleroad/streaming-media-assignment.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Aizlynn Harkleroad",
+  "type": "commonjs",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Tests complete\"",
+    "pretest": "eslint ./src --fix",
+    "start": "node ./src/server.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2"
+  }
+}
