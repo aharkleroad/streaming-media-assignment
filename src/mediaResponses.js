@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const getParty = (request, response) => {
+const loadFile = (request, response, fileName, mediaType) => {
     // takes a dir. and rel. path to a file and creates a file object based on it (doesn't load og file)
-    const file = path.resolve(__dirname, '../client/party.mp4')
+    const file = path.resolve(__dirname, `../client/${fileName}`)
 
     // takes file object and callback and returns stats about a file (async func, runs when file loads)
     fs.stat(file, (err, stats) => {
@@ -44,7 +44,7 @@ const getParty = (request, response) => {
                 'Content-Range': `bytes ${start}-${end}/${total}`,
                 'Accept-Ranges': 'bytes',
                 'Content-Length': chunkSize,
-                'Content-Type': 'video/mp4'
+                'Content-Type': mediaType
         });
 
         // create file stream (takes file object, start, and end point), streams = async
@@ -62,10 +62,20 @@ const getParty = (request, response) => {
     });
 };
 
-// const getBling = (request, response){
-    
-// }
+const getParty = (request, response) => {
+    loadFile(request, response, 'party.mp4', 'video/mp4');
+}
+
+const getBling = (request, response) => {
+    loadFile(request, response, 'bling.mp3', 'audio/mpeg');
+}
+
+const getBird = (request, response) => {
+    loadFile(request, response, 'bird.mp4', 'video/mp4');
+}
 
 module.exports = {
-    getParty
+    getParty,
+    getBling,
+    getBird,
 }
